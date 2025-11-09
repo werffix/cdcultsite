@@ -299,10 +299,6 @@
       text-align: center;
     }
 
-    .modal h3 {
-      margin-bottom: 1.5rem;
-    }
-
     .modal-buttons {
       display: flex;
       flex-direction: column;
@@ -352,23 +348,62 @@
       margin: 0 0.8rem;
     }
 
+    /* MOBILE FIXES */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.1rem; }
-      .tagline { font-size: 1rem; padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
-      .btn-sm { padding: 0.35rem 0.8rem; font-size: 0.8rem; }
-      section { padding: 4rem 0; }
+      /* Hero fixes */
+      .hero {
+        padding-top: 6rem;
+        min-height: 80vh;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
+      .tagline {
+        font-size: 0.95rem;
+        padding: 0 0.8rem;
+        line-height: 1.5;
+      }
 
+      /* Stats — выравнивание по левому краю */
       .stats-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.2rem;
+        text-align: left;
+      }
+      .stat-item {
+        text-align: left;
+      }
+      .stat-number,
+      .stat-label {
+        text-align: left;
       }
       .stat-number {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        margin-bottom: 0.2rem;
       }
+      .stat-label {
+        font-size: 0.85rem;
+      }
+
+      /* Layout */
+      section { padding: 3.5rem 0; }
+      .nav-links { gap: 0.8rem; }
+      .btn-sm { padding: 0.3rem 0.7rem; font-size: 0.75rem; }
       .btn-group {
         flex-direction: column;
         align-items: center;
+      }
+
+      /* Steps */
+      .step {
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .step-num {
+        width: auto;
+        margin-bottom: -0.3rem;
       }
     }
   </style>
@@ -545,11 +580,10 @@
     </div>
   </section>
 
-  <!-- MODAL -->
+  <!-- MODAL — БЕЗ "Куда отправить демо?" -->
   <div id="demoModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h3>Куда отправить демо?</h3>
       <div class="modal-buttons">
         <a href="https://t.me/cdcult_records" class="btn btn-primary">Telegram</a>
         <a href="mailto:cdcult@bk.ru" class="btn btn-primary">Email</a>
@@ -566,7 +600,7 @@
         <a href="https://www.tiktok.com/@cdcult_records" target="_blank">TikTok</a>
       </div>
       <p>
-        © 2024–2026 CDCULT RECORDS<br>
+        © 2024–2026 CDCULT RECORDS • Ижевск<br>
         cdcult@bk.ru
       </p>
     </div>

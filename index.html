@@ -35,7 +35,7 @@
     }
 
     h1, h2, h3, h4 {
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
@@ -82,15 +82,6 @@
       gap: 1.5rem;
     }
 
-    .nav-link {
-      font-size: 0.95rem;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-    .nav-link:hover {
-      opacity: 1;
-    }
-
     .btn-sm {
       padding: 0.4rem 0.9rem;
       border: 1px solid #fff;
@@ -105,6 +96,51 @@
     .btn-sm:hover {
       background: #fff;
       color: #000;
+    }
+
+    /* DROPDOWN INFO */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #000;
+      border: 1px solid #333;
+      min-width: 200px;
+      padding: 1rem;
+      z-index: 1000;
+      font-size: 0.9rem;
+    }
+
+    .dropdown-content a,
+    .dropdown-content button {
+      display: block;
+      margin: 0.5rem 0;
+      opacity: 0.8;
+      background: none;
+      border: none;
+      color: #fff;
+      text-align: left;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
+    }
+
+    .dropdown-content a:hover,
+    .dropdown-content button:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     /* HERO */
@@ -134,18 +170,28 @@
     .btn {
       display: inline-block;
       padding: 0.8rem 2rem;
-      border: 1px solid #fff;
       font-family: inherit;
-      background: transparent;
-      color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       cursor: pointer;
       transition: background 0.3s;
     }
-    .btn:hover {
+
+    .btn-primary {
       background: #fff;
       color: #000;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
     }
 
     .btn-group {
@@ -184,7 +230,7 @@
     }
     .stat-number {
       font-size: 1.8rem;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.05em;
       margin-bottom: 0.4rem;
     }
@@ -223,13 +269,56 @@
       margin-bottom: 1rem;
     }
     .faq-q {
-      font-weight: 400;
+      font-weight: 500;
       opacity: 0.9;
     }
     .faq-a {
       opacity: 0.7;
       margin-top: 0.3rem;
       display: block;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+    }
+
+    .modal-content {
+      background: #000;
+      margin: 15% auto;
+      padding: 2rem;
+      border: 1px solid #333;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal h3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .close:hover {
+      opacity: 1;
     }
 
     /* CONTACT */
@@ -292,10 +381,15 @@
       <nav>
         <div class="logo">CDCULT RECORDS</div>
         <div class="nav-links">
-          <a href="#about" class="nav-link">О лейбле</a>
-          <a href="#faq" class="nav-link">FAQ</a>
-          <a href="#contact" class="nav-link">Контакты</a>
-          <button class="btn-sm" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Связаться</button>
+          <div class="dropdown">
+            <button class="btn-sm">Инфо</button>
+            <div class="dropdown-content">
+              <a href="#about">О лейбле</a>
+              <a href="#faq">FAQ</a>
+              <button id="openModalInHeader">Отправить демо</button>
+              <a href="#contact">Связаться с нами</a>
+            </div>
+          </div>
           <button class="btn-sm" id="langToggle">EN</button>
         </div>
       </nav>
@@ -305,14 +399,25 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero-title" data-ru="CDCULT RECORDS — Музыкальный лейбл" data-en="CDCULT RECORDS — Music Label">CDCULT RECORDS — Музыкальный лейбл</h1>
-      <p class="tagline" data-ru="Загружай свою музыку на все цифровые площадки и получай прибыль с прослушиваний и продаж" 
+      <h1 class="hero-title" 
+          data-ru="CDCULT RECORDS — Музыкальный лейбл" 
+          data-en="CDCULT RECORDS — Music Label">
+        CDCULT RECORDS — Музыкальный лейбл
+      </h1>
+      <p class="tagline" 
+         data-ru="Загружай свою музыку на все цифровые площадки и получай прибыль с прослушиваний и продаж" 
          data-en="Upload your music to all digital platforms and earn from streams and sales">
         Загружай свою музыку на все цифровые площадки и получай прибыль с прослушиваний и продаж
       </p>
       <div class="btn-group">
-        <a href="#contact" class="btn" data-ru="Стать артистом" data-en="Become an artist">Стать артистом</a>
-        <a href="https://music.yandex.ru/label/5776139/" target="_blank" class="btn" style="background:#fff;color:#000;border-color:#fff" data-ru="Наши релизы" data-en="Our releases">Наши релизы</a>
+        <a href="https://t.me/cdcult_records" class="btn btn-primary" 
+           data-ru="Стать артистом" data-en="Become an artist">
+          Стать артистом
+        </a>
+        <a href="https://music.yandex.ru/label/5776139/" target="_blank" class="btn btn-outline" 
+           data-ru="Наши релизы" data-en="Our releases">
+          Наши релизы
+        </a>
       </div>
     </div>
   </section>
@@ -346,18 +451,19 @@
   <!-- STATS -->
   <section id="stats">
     <div class="container">
+      <h2 class="section-title" data-ru="В цифрах" data-en="In numbers">В цифрах</h2>
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Всегда на связи</div>
+          <div class="stat-number" data-ru="24/7" data-en="24/7">24/7</div>
+          <div class="stat-label" data-ru="Всегда на связи" data-en="Always online">Всегда на связи</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">100+</div>
-          <div class="stat-label">Выпущенных релизов</div>
+          <div class="stat-number" data-ru="100+" data-en="100+">100+</div>
+          <div class="stat-label" data-ru="Выпущенных релизов" data-en="Releases published">Выпущенных релизов</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">1 млн+</div>
-          <div class="stat-label">Прослушиваний каталога</div>
+          <div class="stat-number" data-ru="1 млн+" data-en="1M+">1 млн+</div>
+          <div class="stat-label" data-ru="Прослушиваний каталога" data-en="Catalog streams">Прослушиваний каталога</div>
         </div>
       </div>
     </div>
@@ -366,19 +472,31 @@
   <!-- HOW IT WORKS -->
   <section id="how">
     <div class="container">
-      <h2>Как это работает</h2>
+      <h2 class="section-title" data-ru="Как это работает" data-en="How it works">Как это работает</h2>
       <div class="steps">
         <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-text">Напиши в <a href="https://t.me/cdcult_records">поддержку</a> или отправь демо на <a href="mailto:cdcult@bk.ru">cdcult@bk.ru</a></div>
+          <div class="step-num" data-ru="01" data-en="01">01</div>
+          <div class="step-text" 
+               data-ru="Напиши в <a href='https://t.me/cdcult_records'>поддержку</a> или отправь демо на <a href='mailto:cdcult@bk.ru'>cdcult@bk.ru</a>"
+               data-en="Message <a href='https://t.me/cdcult_records'>support</a> or send your demo to <a href='mailto:cdcult@bk.ru'>cdcult@bk.ru</a>">
+            Напиши в <a href="https://t.me/cdcult_records">поддержку</a> или отправь демо на <a href="mailto:cdcult@bk.ru">cdcult@bk.ru</a>
+          </div>
         </div>
         <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-text">Получи обратную связь и форму на заполнение релизов</div>
+          <div class="step-num" data-ru="02" data-en="02">02</div>
+          <div class="step-text" 
+               data-ru="Получи обратную связь и форму на заполнение релизов"
+               data-en="Get feedback and the release submission form">
+            Получи обратную связь и форму на заполнение релизов
+          </div>
         </div>
         <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-text">Релиз выходит в выбранную дату. Выплаты — ежеквартально</div>
+          <div class="step-num" data-ru="03" data-en="03">03</div>
+          <div class="step-text" 
+               data-ru="Релиз выходит в выбранную дату. Выплаты — ежеквартально"
+               data-en="Release goes live on your chosen date. Payouts — quarterly">
+            Релиз выходит в выбранную дату. Выплаты — ежеквартально
+          </div>
         </div>
       </div>
     </div>
@@ -387,19 +505,19 @@
   <!-- FAQ -->
   <section id="faq">
     <div class="container">
-      <h2>FAQ</h2>
+      <h2 class="section-title" data-ru="FAQ" data-en="FAQ">FAQ</h2>
       <ul class="faq-list">
         <li class="faq-item">
-          <span class="faq-q">Сколько стоит публикация?</span><br>
-          <span class="faq-a">Бесплатно. Мы получаем 30% от роялти.</span>
+          <span class="faq-q" data-ru="Сколько стоит публикация?" data-en="How much does distribution cost?">Сколько стоит публикация?</span><br>
+          <span class="faq-a" data-ru="Бесплатно. Мы получаем 30% от роялти." data-en="Free. We take 30% of royalties.">Бесплатно. Мы получаем 30% от роялти.</span>
         </li>
         <li class="faq-item">
-          <span class="faq-q">Могу ли я забрать релиз обратно?</span><br>
-          <span class="faq-a">Да — в любой момент, без штрафов.</span>
+          <span class="faq-q" data-ru="Могу ли я забрать релиз обратно?" data-en="Can I remove my release?">Могу ли я забрать релиз обратно?</span><br>
+          <span class="faq-a" data-ru="Да — в любой момент, без штрафов." data-en="Yes — anytime, no penalties.">Да — в любой момент, без штрафов.</span>
         </li>
         <li class="faq-item">
-          <span class="faq-q">С какими жанрами вы работаете?</span><br>
-          <span class="faq-a">С любыми.</span>
+          <span class="faq-q" data-ru="С какими жанрами вы работаете?" data-en="What genres do you work with?">С какими жанрами вы работаете?</span><br>
+          <span class="faq-a" data-ru="С любыми." data-en="Any.">С любыми.</span>
         </li>
       </ul>
     </div>
@@ -408,18 +526,36 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title" data-ru="Готов к релизу?" data-en="Ready to release?">Готов к релизу?</h2>
+      <h2 class="section-title" 
+          data-ru="Готов к релизу?" 
+          data-en="Ready to release?">
+        Готов к релизу?
+      </h2>
       <p class="contact-text" 
-         data-ru="Напиши нам в <a href='https://t.me/cdcult_records'>Telegram</a> или отправь демо на<br><a href='mailto:cdcult@bk.ru'>cdcult@bk.ru</a>"
-         data-en="Message us on <a href='https://t.me/cdcult_records'>Telegram</a> or send your demo to<br><a href='mailto:cdcult@bk.ru'>cdcult@bk.ru</a>">
-        Напиши нам в <a href="https://t.me/cdcult_records">Telegram</a> или отправь демо на<br>
-        <a href="mailto:cdcult@bk.ru">cdcult@bk.ru</a>
+         data-ru="Выбери, как отправить демо"
+         data-en="Choose how to send your demo">
+        Выбери, как отправить демо
       </p>
       <div class="btn-wrapper">
-        <a href="mailto:cdcult@bk.ru" class="btn" data-ru="Отправить демо" data-en="Send demo">Отправить демо</a>
+        <button id="openModal" class="btn btn-primary" 
+                data-ru="Отправить демо" data-en="Send demo">
+          Отправить демо
+        </button>
       </div>
     </div>
   </section>
+
+  <!-- MODAL -->
+  <div id="demoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Куда отправить демо?</h3>
+      <div class="modal-buttons">
+        <a href="https://t.me/cdcult_records" class="btn btn-primary">Telegram</a>
+        <a href="mailto:cdcult@bk.ru" class="btn btn-primary">Email</a>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -430,7 +566,6 @@
         <a href="https://www.tiktok.com/@cdcult_records" target="_blank">TikTok</a>
       </div>
       <p>
-        Сайт: <a href="https://cdcult.ru" target="_blank">cdcult.ru</a><br>
         © 2024–2026 CDCULT RECORDS<br>
         cdcult@bk.ru
       </p>
@@ -440,6 +575,7 @@
   <script>
     let isEn = false;
 
+    // Language toggle
     document.getElementById('langToggle').addEventListener('click', function() {
       isEn = !isEn;
       this.textContent = isEn ? 'RU' : 'EN';
@@ -448,6 +584,32 @@
         el.innerHTML = isEn ? el.dataset.en : el.dataset.ru;
       });
     });
+
+    // Modal control
+    const modal = document.getElementById('demoModal');
+    const openBtns = [
+      document.getElementById('openModal'),
+      document.getElementById('openModalInHeader')
+    ];
+    const closeBtn = document.querySelector('.close');
+
+    openBtns.forEach(btn => {
+      if (btn) {
+        btn.onclick = function() {
+          modal.style.display = 'block';
+        }
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>

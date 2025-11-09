@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDCULT RECORDS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    a:hover {
+      border-bottom: 1px solid #fff;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 6rem 0;
+      border-top: 1px solid #333;
+    }
+    section:first-of-type {
+      border-top: none;
+    }
+
+    /* HEADER */
+    header {
+      padding: 2rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(4px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      letter-spacing: 0.15em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .nav-link:hover {
+      opacity: 1;
+    }
+
+    .btn-sm {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #fff;
+      font-family: inherit;
+      background: transparent;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      transition: background 0.3s;
+    }
+    .btn-sm:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 4rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero .tagline {
+      font-size: 1.15rem;
+      opacity: 0.75;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border: 1px solid #fff;
+      font-family: inherit;
+      background: transparent;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ABOUT */
+    .about-content p {
+      margin-bottom: 1.3rem;
+    }
+
+    .features {
+      margin-top: 1.5rem;
+      list-style: none;
+      padding-left: 0;
+    }
+    .features li {
+      margin-bottom: 0.7rem;
+      opacity: 0.85;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      margin-top: 2rem;
+    }
+    .step {
+      display: flex;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 3rem;
+      opacity: 0.6;
+    }
+    .step-text {
+      flex: 1;
+    }
+
+    /* FAQ */
+    .faq-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-q {
+      font-weight: 400;
+      opacity: 0.9;
+    }
+    .faq-a {
+      opacity: 0.7;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* CONTACT */
+    #contact {
+      text-align: center;
+    }
+    #contact h2,
+    #contact p,
+    #contact .btn-wrapper {
+      text-align: center;
+    }
+    #contact p {
+      max-width: 600px;
+      margin: 2rem auto;
+      opacity: 0.85;
+      font-size: 1.1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 4rem 0 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    .socials {
+      margin: 1.5rem 0;
+    }
+    .socials a {
+      margin: 0 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.1rem; }
+      .tagline { font-size: 1rem; padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .btn-sm { padding: 0.35rem 0.8rem; font-size: 0.8rem; }
+      section { padding: 4rem 0; }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .stat-number {
+        font-size: 1.5rem;
+      }
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">CDCULT RECORDS</div>
+        <div class="nav-links">
+          <a href="#about" class="nav-link">О лейбле</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#contact" class="nav-link">Контакты</a>
+          <button class="btn-sm" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Связаться</button>
+          <button class="btn-sm" id="langToggle">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title" data-ru="CDCULT RECORDS — Музыкальный лейбл" data-en="CDCULT RECORDS — Music Label">CDCULT RECORDS — Музыкальный лейбл</h1>
+      <p class="tagline" data-ru="Загружай свою музыку на все цифровые площадки и получай прибыль с прослушиваний и продаж" 
+         data-en="Upload your music to all digital platforms and earn from streams and sales">
+        Загружай свою музыку на все цифровые площадки и получай прибыль с прослушиваний и продаж
+      </p>
+      <div class="btn-group">
+        <a href="#contact" class="btn" data-ru="Стать артистом" data-en="Become an artist">Стать артистом</a>
+        <a href="https://music.yandex.ru/label/5776139/" target="_blank" class="btn" style="background:#fff;color:#000;border-color:#fff" data-ru="Наши релизы" data-en="Our releases">Наши релизы</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title" data-ru="О лейбле" data-en="About">О лейбле</h2>
+      <div class="about-content">
+        <p class="about-text" 
+           data-ru="CDCULT RECORDS — независимый лейбл и дистрибьютор.<br>Мы выводим музыку артистов на Spotify, Apple Music, YouTube Music, Яндекс.Музыка и более чем 150 других сервисов по всему миру."
+           data-en="CDCULT RECORDS — independent label and distributor.<br>We distribute artists’ music to Spotify, Apple Music, YouTube Music, Yandex.Music, and 150+ platforms worldwide.">
+          CDCULT RECORDS — независимый лейбл и дистрибьютор.<br>Мы выводим музыку артистов на Spotify, Apple Music, YouTube Music, Яндекс.Музыка и более чем 150 других сервисов по всему миру.
+        </p>
+        <ul class="features">
+          <li class="feature-item" data-ru="• 70% дохода — тебе" data-en="• 70% revenue to you">• 70% дохода — тебе</li>
+          <li class="feature-item" data-ru="• Публикация за 3 дня" data-en="• Release in 3 days">• Публикация за 3 дня</li>
+          <li class="feature-item" data-ru="• Без скрытых комиссий" data-en="• No hidden fees">• Без скрытых комиссий</li>
+          <li class="feature-item" data-ru="• Сохранение авторских прав" data-en="• You keep copyright">• Сохранение авторских прав</li>
+          <li class="feature-item" data-ru="• Поддержка на всех этапах" data-en="• Full support at every step">• Поддержка на всех этапах</li>
+        </ul>
+        <p class="mission" 
+           data-ru="Наша миссия — дать каждому музыканту равные возможности для выхода на глобальный рынок."
+           data-en="Our mission is to give every musician equal access to the global market.">
+          Наша миссия — дать каждому музыканту равные возможности для выхода на глобальный рынок.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Всегда на связи</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Выпущенных релизов</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1 млн+</div>
+          <div class="stat-label">Прослушиваний каталога</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <h2>Как это работает</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-text">Напиши в <a href="https://t.me/cdcult_records">поддержку</a> или отправь демо на <a href="mailto:cdcult@bk.ru">cdcult@bk.ru</a></div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-text">Получи обратную связь и форму на заполнение релизов</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-text">Релиз выходит в выбранную дату. Выплаты — ежеквартально</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <span class="faq-q">Сколько стоит публикация?</span><br>
+          <span class="faq-a">Бесплатно. Мы получаем 30% от роялти.</span>
+        </li>
+        <li class="faq-item">
+          <span class="faq-q">Могу ли я забрать релиз обратно?</span><br>
+          <span class="faq-a">Да — в любой момент, без штрафов.</span>
+        </li>
+        <li class="faq-item">
+          <span class="faq-q">С какими жанрами вы работаете?</span><br>
+          <span class="faq-a">С любыми.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title" data-ru="Готов к релизу?" data-en="Ready to release?">Готов к релизу?</h2>
+      <p class="contact-text" 
+         data-ru="Напиши нам в <a href='https://t.me/cdcult_records'>Telegram</a> или отправь демо на<br><a href='mailto:cdcult@bk.ru'>cdcult@bk.ru</a>"
+         data-en="Message us on <a href='https://t.me/cdcult_records'>Telegram</a> or send your demo to<br><a href='mailto:cdcult@bk.ru'>cdcult@bk.ru</a>">
+        Напиши нам в <a href="https://t.me/cdcult_records">Telegram</a> или отправь демо на<br>
+        <a href="mailto:cdcult@bk.ru">cdcult@bk.ru</a>
+      </p>
+      <div class="btn-wrapper">
+        <a href="mailto:cdcult@bk.ru" class="btn" data-ru="Отправить демо" data-en="Send demo">Отправить демо</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="socials">
+        <a href="https://t.me/cdcult" target="_blank">Telegram</a>
+        <a href="https://vk.com/cdcult" target="_blank">ВКонтакте</a>
+        <a href="https://www.tiktok.com/@cdcult_records" target="_blank">TikTok</a>
+      </div>
+      <p>
+        Сайт: <a href="https://cdcult.ru" target="_blank">cdcult.ru</a><br>
+        © 2024–2026 CDCULT RECORDS<br>
+        cdcult@bk.ru
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    let isEn = false;
+
+    document.getElementById('langToggle').addEventListener('click', function() {
+      isEn = !isEn;
+      this.textContent = isEn ? 'RU' : 'EN';
+
+      document.querySelectorAll('[data-ru]').forEach(el => {
+        el.innerHTML = isEn ? el.dataset.en : el.dataset.ru;
+      });
+    });
+  </script>
+</body>
+</html>

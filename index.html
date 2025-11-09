@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CDCULT RECORDS</title>
+
+  <!-- Favicon (поместите файлы в корень: favicon.ico и т.д.) -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
   <style>
     * {
       margin: 0;
@@ -350,6 +356,12 @@
 
     /* MOBILE FIXES */
     @media (max-width: 768px) {
+      /* Уменьшаем логотип в header */
+      .logo {
+        font-size: 1.0rem;
+        letter-spacing: 0.1em;
+      }
+
       /* Hero fixes */
       .hero {
         padding-top: 6rem;
@@ -365,7 +377,7 @@
         line-height: 1.5;
       }
 
-      /* Stats — выравнивание по левому краю */
+      /* Stats — слева */
       .stats-grid {
         grid-template-columns: 1fr;
         gap: 1.2rem;
@@ -580,7 +592,7 @@
     </div>
   </section>
 
-  <!-- MODAL — БЕЗ "Куда отправить демо?" -->
+  <!-- MODAL — без заголовка -->
   <div id="demoModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -600,8 +612,8 @@
         <a href="https://www.tiktok.com/@cdcult_records" target="_blank">TikTok</a>
       </div>
       <p>
-        © 2024–2026 CDCULT RECORDS • Ижевск<br>
-        cdcult@bk.ru
+        © 2024–2026 CDCULT RECORDS<br>
+        <a href="https://cdcult.ru" target="_blank">cdcult.ru</a> | cdcult@bk.ru
       </p>
     </div>
   </footer>
@@ -609,7 +621,6 @@
   <script>
     let isEn = false;
 
-    // Language toggle
     document.getElementById('langToggle').addEventListener('click', function() {
       isEn = !isEn;
       this.textContent = isEn ? 'RU' : 'EN';
@@ -619,7 +630,6 @@
       });
     });
 
-    // Modal control
     const modal = document.getElementById('demoModal');
     const openBtns = [
       document.getElementById('openModal'),

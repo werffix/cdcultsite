@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CDCULT RECORDS</title>
 
-  <!-- Favicon (поместите файлы в корень: favicon.ico и т.д.) -->
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -356,13 +356,13 @@
 
     /* MOBILE FIXES */
     @media (max-width: 768px) {
-      /* Уменьшаем логотип в header */
+      /* Уменьшаем логотип */
       .logo {
         font-size: 1.0rem;
         letter-spacing: 0.1em;
       }
 
-      /* Hero fixes */
+      /* Hero */
       .hero {
         padding-top: 6rem;
         min-height: 80vh;
@@ -375,6 +375,18 @@
         font-size: 0.95rem;
         padding: 0 0.8rem;
         line-height: 1.5;
+      }
+
+      /* Одинаковые кнопки */
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .btn-group .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
       }
 
       /* Stats — слева */
@@ -402,10 +414,6 @@
       section { padding: 3.5rem 0; }
       .nav-links { gap: 0.8rem; }
       .btn-sm { padding: 0.3rem 0.7rem; font-size: 0.75rem; }
-      .btn-group {
-        flex-direction: column;
-        align-items: center;
-      }
 
       /* Steps */
       .step {
@@ -457,7 +465,7 @@
         Загружай свою музыку на все цифровые площадки и получай прибыль с прослушиваний и продаж
       </p>
       <div class="btn-group">
-        <a href="https://t.me/cdcult_records" class="btn btn-primary" 
+        <a href="#contact" class="btn btn-primary" 
            data-ru="Стать артистом" data-en="Become an artist">
           Стать артистом
         </a>
@@ -647,13 +655,13 @@
 
     closeBtn.onclick = function() {
       modal.style.display = 'none';
-    }
+    };
 
     window.onclick = function(event) {
       if (event.target === modal) {
         modal.style.display = 'none';
       }
-    }
+    };
   </script>
 </body>
 </html>
